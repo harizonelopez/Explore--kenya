@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, logout_user, LoginManager, current_user
 from flask_migrate import Migrate
 
-#oops
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'aladinh00-010montext'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
