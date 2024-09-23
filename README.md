@@ -1,14 +1,12 @@
 # Explore Kenya App
 
- This is a Flask-based web application which aids in showing my Explore kenya website whic can be used by tourists or visitors visiting kenya and coming to explore it scenic features.
+ This is a Flask-based web application which aids in showing the Explore kenya website which can be used by tourists or visitors visiting kenya and coming to explore it scenic features.
 
 
 ## Features
  1. User Registration
  2. User Login/Logout
- 3. Quiz Functionality
- 4. Score Calculation
- 5. Flash Messages for User Feedback
+ 3. The scenic features and the booking of the places of visit.
 
 
 ## Installation
