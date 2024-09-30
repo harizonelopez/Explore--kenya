@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, flash, redirect, url_for, get
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, logout_user, LoginManager, current_user
 from flask_migrate import Migrate
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'aladinh00-010montext'
@@ -32,14 +34,15 @@ class Booking(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route('/')
-def home():
-    flash_messages = get_flash_messages()
-    return render_template("index.html", flash_messages=flash_messages)
 
 def get_flash_messages():
     messages = get_flashed_messages()
     return [(message, 'info') for message in messages]  
+
+@app.route('/')
+def home():
+    flash_messages = get_flash_messages()
+    return render_template("index.html", flash_messages=flash_messages)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -53,7 +56,7 @@ def signup():
             flash('Email address is already registered. Login instead', 'danger')
             return redirect(url_for('login'))
         
-        new_user = User(username=username, email=email, password=password)
+        new_user = User(username=username, email=email, password=generate_password_hash(password))
         db.session.add(new_user)
         db.session.commit()
 
@@ -69,7 +72,7 @@ def login():
         password = request.form['password']
         user = User.query.filter_by(email=email).first()
 
-        if user and user.password == password:
+        if user and check_password_hash(user.password, password):
             login_user(user)
             return redirect(url_for('home'))
         else:
@@ -81,7 +84,7 @@ def login():
 def booking():
     if request.method == 'POST':
         destination = request.form['destination']
-        cost = request.form['cost']
+        cost = int(request.form['cost'])
         
         if current_user.is_authenticated:
             new_booking = Booking(destination=destination, cost=cost, user_id=current_user.id)
