@@ -8,7 +8,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'aladinh00-010montext'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
