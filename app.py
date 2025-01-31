@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'aladinh00-010montext'
+app.config['SECRET_KEY'] = 'aladinh00-10montext'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
 
 db = SQLAlchemy(app)
@@ -52,14 +52,14 @@ def signup():
 
         existing_user = User.query.filter_by(email=email).first()
         if existing_user:
-            flash('Email address is already registered. Login instead', 'danger')
+            flash('Email address already registered. Login instead', 'danger')
             return redirect(url_for('login'))
         
         new_user = User(username=username, email=email, password=generate_password_hash(password))
         db.session.add(new_user)
         db.session.commit()
 
-        flash(' Account created successfully! Login now', 'success')
+        flash('Account created successfully! Login now', 'success')
         return redirect(url_for('login'))
     
     return render_template('signup.html')
@@ -75,7 +75,7 @@ def login():
             login_user(user)
             return redirect(url_for('home'))
         else:
-            flash(' Login Unsuccessful. Please check email and password', 'danger')
+            flash('Login Unsuccessful. Email or password mismatch', 'danger')
 
     return render_template('login.html')
 
@@ -90,7 +90,7 @@ def booking():
             db.session.add(new_booking)
             db.session.commit()
 
-            flash(f'Hey {current_user.username}, you have successfully booked {destination} destination as your tour place.', 'success')
+            flash(f'Hey {current_user.username}, you have successfully booked {destination} as your destination tour place.', 'success')
             return redirect(url_for('booking'))
         else:
             flash('Please log in or signup to book a destination', 'danger')
