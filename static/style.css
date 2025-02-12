@@ -70,7 +70,7 @@ section.home {
 .home .home-box {
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.1)), url("../static/Images/people.jpg");
+    background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.1)), url("../static/Images/home-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -445,9 +445,9 @@ section.home {
 /* featured section ends here */
 
 
-/* feedback section starts here */
+/* reviews and feedback section starts here */
 .feedback {
-    background: url(../static/Images/section-background.jpg);
+    background: url(../static/Images/back_ground.jpg);
     background-position: center;
     background-size: cover;
     margin-top: 6rem;
