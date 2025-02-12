@@ -4,17 +4,10 @@ from flask_login import UserMixin, login_user, logout_user, LoginManager, curren
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
-# import logging
-
-
-# Configure logging
-# logging.basicConfig(level=logging.debug)
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'aladinh00-010montext')
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['DEBUG'] = True
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
