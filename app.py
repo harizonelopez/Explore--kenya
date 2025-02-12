@@ -10,7 +10,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # logging.basicConfig(level=logging.debug)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'aladinh00-10montext'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config['DEBUG'] = True
