@@ -794,9 +794,9 @@ footer .footer .container a:hover {
 }
 
 footer .footer .container span {
-    color: #000;
+    color: #191818e0;
     background: #00cee4;
-    font-size: .9rem;
+    font-size: 0.9rem;
     padding: .1rem .5rem;
     border-radius: .3rem;
     font-weight: 500;
@@ -816,6 +816,16 @@ footer .footer .copyright a {
     margin-left: 1rem;
     text-align: center;
 
+}
+
+.developer-name {
+    font-weight: bold;
+    color: #139ae2; /* LinkedIn Blue */
+    transition: color 0.3s ease-in-out;
+}
+
+.developer-name:hover {
+    color: #29aa7b; /* Darker shade on hover */
 }
 /* footer section ends here */
 
