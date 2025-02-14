@@ -4,6 +4,8 @@ from flask_login import UserMixin, login_user, logout_user, LoginManager, curren
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from flask import jsonify
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
@@ -59,7 +61,7 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
 
-        flash('Account created successfully! Login now', 'success')
+        flash('User account created successfully! Login now', 'success')
         return redirect(url_for('login'))
     
     return render_template('signup.html')
@@ -94,7 +96,8 @@ def booking():
             return redirect(url_for('booking'))
         else:
             flash('Please log in or signup to book a destination', 'danger')
-            return redirect(url_for('signup'))
+            return jsonify({'message': 'Please log in or signup to book a destination'})
+            # return redirect(url_for('signup'))
 
     return render_template('book.html')
 
