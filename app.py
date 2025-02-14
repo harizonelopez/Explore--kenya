@@ -4,7 +4,7 @@ from flask_login import UserMixin, login_user, logout_user, LoginManager, curren
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
-from flask import jsonify
+from flask_login import login_required
 
 
 app = Flask(__name__)
@@ -35,6 +35,8 @@ class Booking(db.Model):
 with app.app_context():
     db.create_all()
 
+login_manager.login_view = 'signup' # This will redirect to the signup page if the user is not logged in
+login_manager.login_message_category = 'danger' # This will show the danger message if the user is not logged in
 
 def get_flash_messages():
     messages = get_flashed_messages()
@@ -82,25 +84,19 @@ def login():
     return render_template('login.html')
 
 @app.route('/booking', methods=['GET', 'POST'])
+@login_required # This will redirect to the login page if the user is not logged in
 def booking():
     if request.method == 'POST':
         destination = request.form['destination']
         cost = int(request.form['cost'])
         
-        if current_user.is_authenticated:
-            new_booking = Booking(destination=destination, cost=cost, user_id=current_user.id)
-            db.session.add(new_booking)
-            db.session.commit()
+        new_booking = Booking(destination=destination, cost=cost, user_id=current_user.id)
+        db.session.add(new_booking)
+        db.session.commit()
 
-            flash(f'Hey {current_user.username}, you have successfully booked {destination} as your destination tour place.', 'success')
-            return redirect(url_for('booking'))
-        else:
-            flash('Please log in or signup to book a destination', 'danger')
-            return jsonify({'message': 'Please log in or signup to book a destination'})
-            # return redirect(url_for('signup'))
-
+        flash(f'Hey {current_user.username}, you have successfully booked {destination} as your destination tour place.', 'success')
+        return redirect(url_for('booking'))
     return render_template('book.html')
-
 
 @app.route('/logout')
 def logout():
