@@ -35,8 +35,8 @@ class Booking(db.Model):
 with app.app_context():
     db.create_all()
 
-login_manager.login_view = 'signup' # Redirect to the signup page if the user is not logged in
-login_manager.login_message_category = 'danger' # Show the danger message if the user is not logged in
+login_manager.login_view = 'signup' # Redirects to the signup page if the user is not logged in
+login_manager.login_message_category = 'danger' # Shows the danger message if the user is not logged in
 
 def get_flash_messages():
     messages = get_flashed_messages()
@@ -84,7 +84,7 @@ def login():
     return render_template('login.html')
 
 @app.route('/booking', methods=['GET', 'POST'])
-@login_required # This will redirect to the login page if the user is not logged in
+@login_required # Redirects to the login page if the user is not logged in
 def booking():
     if request.method == 'POST':
         destination = request.form['destination']
