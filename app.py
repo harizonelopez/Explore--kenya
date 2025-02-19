@@ -98,6 +98,20 @@ def booking():
         return redirect(url_for('booking'))
     return render_template('book.html')
 
+@app.route('/guide')
+def guide():
+    return render_template('guide.html')
+
+@app.route('/policy')
+@login_required # Redirects the user to the login page if the user isn't logged in
+def policy():
+    return render_template('policy.html')
+
+@app.route('/faq_questions')
+@login_required # Redirects the user to the login page if the user isn't logged in
+def faq_questions():
+    return render_template('faq.html')
+
 @app.route('/logout')
 def logout():
     logout_user()
