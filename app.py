@@ -103,7 +103,7 @@ def guide():
     return render_template('guide.html')
 
 @app.route('/policy')
-@login_required # Redirects the user to the login page if the user isn't logged in
+# @login_required # Redirects the user to the login page if the user isn't logged in
 def policy():
     return render_template('policy.html')
 
