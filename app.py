@@ -35,8 +35,8 @@ class Booking(db.Model):
 with app.app_context():
     db.create_all()
 
-login_manager.login_view = 'signup' # This will redirect to the signup page if the user is not logged in
-login_manager.login_message_category = 'danger' # This will show the danger message if the user is not logged in
+login_manager.login_view = 'signup' # Redirect to the signup page if the user is not logged in
+login_manager.login_message_category = 'danger' # Show the danger message if the user is not logged in
 
 def get_flash_messages():
     messages = get_flashed_messages()
