@@ -108,9 +108,13 @@ def guide():
 def faq():
     return render_template('faq.html')
 
-@app.route('/contacts')
+@app.route('/_contacts')
 def contact():
     return render_template('contact.html')
+
+@app.route('/_terms')
+def terms():
+    return render_template('terms.html')
 
 @app.route('/logout')
 def logout():
