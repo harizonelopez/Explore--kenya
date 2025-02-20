@@ -5,7 +5,6 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'aladinh00-010montext')
@@ -97,19 +96,13 @@ def booking():
         return redirect(url_for('booking'))
     return render_template('book.html')
 
-@app.route('/guide')
-def guide():
-    return render_template('guide.html')
-
-@app.route('/policy')
-# @login_required # Redirects the user to the login page if the user isn't logged in
+@app.route('/privacy_policy')
 def policy():
     return render_template('policy.html')
 
-@app.route('/faq_questions')
-@login_required # Redirects the user to the login page if the user isn't logged in
-def faq_questions():
-    return render_template('faq.html')
+@app.route('/user_guide')
+def guide():
+    return render_template('guide.html')
 
 @app.route('/logout')
 def logout():

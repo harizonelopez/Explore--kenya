@@ -1,26 +1,91 @@
-    <!-- The booking guide --> 
-    <!-- This is a simple HTML page that explains the fields in the booking form. -->
-    <!-- It is a static page that does not require any dynamic content. -->
 <!DOCTYPE html>
 <html lang="en">
-<h1>THE BOOKING GUIDE</h1>
-<title>Travel Kenya - Adventure guide</title>
-<p>
-    It contains fields for the destination, cost, date, time, phone number, and preference.<br> 
-    The preference field is a dropdown that allows users to select whether they want to book as an individual or as a group/family.<br>
-    If the user selects group/family, an additional field is displayed for the number of people involved.<br> 
-    The form also contains a submit button that allows users to submit their booking request.<br>
-</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Kenya - User Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .guide-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .guide-container h2 {
+            color: #2980b9;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .guide-container p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .guide-container ul {
+            margin-left: 20px;
+            list-style: disc;
+        }
+        .guide-container ul li {
+            margin-bottom: 10px;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Guide</h1>
+    <div class="guide-container">
+        <h2>Welcome to Travel Kenya!</h2>
+        <p>Our platform is designed to make your travel planning as easy and convenient as possible. Here's how you can navigate and use the website effectively:</p>
 
-<ul>
-    <li><strong>Destination</strong>: Enter the destination of your choice.</li>
-    <li><strong>Cost</strong>: Enter the cost of the trip.</li>
-    <li><strong>Date</strong>: Enter the date of the trip.</li>
-    <li><strong>Time</strong>: Enter the time of the trip.</li>
-    <li><strong>Phone Number</strong>: Enter your phone number.</li>
-    <li><strong>Select Your Preference</strong>: Choose whether you want to book as an individual or as a group/family.</li>
-    <li>If <strong>Group/Family</strong>: Enter the number of people involved.</li>
-    <li>Click the <strong>"Book"</strong> button to submit your booking request.</li>
-</ul> 
+        <h2>Booking Your Adventure</h2>
+        <p>Follow these steps to complete your booking:</p>
+        <ul>
+            <li><strong>Destination</strong>: Enter the destination you wish to visit. You can select from the list of popular destinations or enter a custom location.</li>
+            <li><strong>Cost</strong>: Input the cost of the trip. This helps in budgeting and planning your adventure.</li>
+            <li><strong>Date</strong>: Choose the date of your trip using the date picker. Ensure you select a suitable date for your convenience.</li>
+            <li><strong>Time</strong>: Specify the time you would like to begin your adventure.</li>
+            <li><strong>Phone Number</strong>: Provide a valid contact number. This is necessary for confirmation and communication purposes.</li>
+            <li><strong>Select Your Preference</strong>:
+                <ul>
+                    <li><span class="highlight">Individual</span>: Book as a single traveler.</li>
+                    <li><span class="highlight">Group/Family</span>: If you are booking for multiple people, select this option. An additional field will appear for you to specify the number of people involved.</li>
+                </ul>
+            </li>
+            <li>Once all fields are completed, click on the <strong>"Book"</strong> button to submit your booking request.</li>
+        </ul>
 
+        <h2>Navigating the Website</h2>
+        <ul>
+            <li>Use the <strong>Menu</strong> at the top of the page to explore different sections of the website such as Home, Destinations, About Us, and Contact Us.</li>
+            <li>Check out our <strong>Adventure Guide</strong> section for travel tips and popular travel packages.</li>
+            <li>If you need any help, visit the <strong>FAQ</strong> or reach out through the <strong>Contact Us</strong> page.</li>
+        </ul>
+
+        <h2>Need Help?</h2>
+        <p>If you encounter any issues or have further questions, feel free to <a href="contact.html">Contact Us</a>. We are here to assist you and make your travel experience memorable!</p>
+    </div>
+</body>
 </html>
