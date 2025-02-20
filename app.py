@@ -96,13 +96,21 @@ def booking():
         return redirect(url_for('booking'))
     return render_template('book.html')
 
-@app.route('/privacy_policy')
+@app.route('/_policy')
 def policy():
     return render_template('policy.html')
 
-@app.route('/user_guide')
+@app.route('/_guide')
 def guide():
     return render_template('guide.html')
+
+@app.route('/faq_questions')
+def faq():
+    return render_template('faq.html')
+
+@app.route('/contacts')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/logout')
 def logout():

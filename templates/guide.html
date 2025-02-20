@@ -57,7 +57,8 @@
 <body>
     <h1>User Guide</h1>
     <div class="guide-container">
-        <h2>Welcome to Travel Kenya!</h2>
+        <h2>Welcome, </h2>
+        <h3>Travel Kenya with - <a href="{{ url_for('home') }}">DNI Tours & Adventures</a>!</h3>
         <p>Our platform is designed to make your travel planning as easy and convenient as possible. Here's how you can navigate and use the website effectively:</p>
 
         <h2>Booking Your Adventure</h2>
@@ -70,7 +71,7 @@
             <li><strong>Phone Number</strong>: Provide a valid contact number. This is necessary for confirmation and communication purposes.</li>
             <li><strong>Select Your Preference</strong>:
                 <ul>
-                    <li><span class="highlight">Individual</span>: Book as a single traveler.</li>
+                    <li><span class="highlight">Individual</span>: Book as a single tourist/visitor.</li>
                     <li><span class="highlight">Group/Family</span>: If you are booking for multiple people, select this option. An additional field will appear for you to specify the number of people involved.</li>
                 </ul>
             </li>
@@ -85,7 +86,7 @@
         </ul>
 
         <h2>Need Help?</h2>
-        <p>If you encounter any issues or have further questions, feel free to <a href="contact.html">Contact Us</a>. We are here to assist you and make your travel experience memorable!</p>
+        <p>If you encounter any issues or have further questions, feel free to <a href="{{ url_for('contact') }}" target="_blank">Contact Us</a>. We are here to assist you and make your travel experience memorable!</p>
     </div>
 </body>
 </html>
