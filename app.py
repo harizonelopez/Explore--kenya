@@ -4,6 +4,7 @@ from flask_login import UserMixin, login_user, logout_user, LoginManager, curren
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
@@ -13,6 +14,17 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 login_manager = LoginManager(app)
+
+# Mail Configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'Harizonelopez23@gmail.com'
+app.config['MAIL_PASSWORD'] = 'xkfu aslr yswq bdbt'
+app.config['MAIL_DEFAULT_SENDER'] = 'DNI Tours & Adventures Ltd, harizonelopez23@gmail.com'
+
+mail = Mail(app)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -96,6 +108,33 @@ def booking():
         return redirect(url_for('booking'))
     return render_template('book.html')
 
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+        
+        # Compose the email
+        msg = Message(
+            subject=f"New Contact Form Message from {name}",
+            recipients=['Harizonelopez23@gmail.com'],  # The email where you receive the messages
+            body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
+        )
+        
+        # Send the email
+        try:
+            mail.send(msg)
+            flash('Your message has been sent successfully!', 'success')
+        except Exception as e:
+            flash('An error occurred while sending your message. Please try again later.', 'danger')
+            print(e)  # For debugging purposes
+        
+        return redirect(url_for('contact'))
+    
+    return render_template('contact.html')
+
+
 @app.route('/_policy')
 def policy():
     return render_template('policy.html')
@@ -107,10 +146,6 @@ def guide():
 @app.route('/faq_questions')
 def faq():
     return render_template('faq.html')
-
-@app.route('/_contacts')
-def contact():
-    return render_template('contact.html')
 
 @app.route('/_terms')
 def terms():

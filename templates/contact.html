@@ -75,7 +75,7 @@
         </div>
 
         <h2>Send Us a Message</h2>
-        <form class="contact-form" action="#" method="POST">
+        <form class="contact-form" action="{{ url_for('contact') }}" method="POST">
             <input 
                 type="text" 
                 name="name" 
@@ -89,8 +89,9 @@
                 placeholder="Your Message" 
                 rows="5" required>
             </textarea>
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn btn-outline-secondary">Submit</button>
         </form>
+
     </div>
 </body>
 </html>
