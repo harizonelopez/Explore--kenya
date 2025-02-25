@@ -31,7 +31,9 @@
                 </div>
                 {% if current_user.is_authenticated %}
                     <h1 align="center">Welcome <a href="#">{{ current_user.username }}</a>. We are glad to have you here.</h1>
-                    <a href="{{ url_for('logout') }}"><span>log out</span></a>
+                    <div class="log-out">
+                        <a href="{{ url_for('logout') }}"><strong>Log out</strong></a>
+                    </div>
                 {% else %}
                     <div class="signup-login">
                         <a href="{{ url_for('signup') }}"><strong>Sign up</strong></a>

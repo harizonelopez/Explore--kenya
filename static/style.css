@@ -143,13 +143,19 @@ section.home {
 .home .home-box nav .signup-login a {
     color: var(--white-color);
     padding: .3rem 1rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
+}
+
+.home .home-box nav .log-out a {
+    color: #ce1c31; 
+    padding: .4rem 1rem;
+    border-radius: 1rem;
 }
 
 .home .home-box nav .signup-login a:last-child {
     background: var(--green-color);
     padding: .3rem 1rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
 }
 
 .home .home-box nav .signup-login a:hover {
@@ -164,6 +170,11 @@ section.home {
 .home .home-box nav .signup-login a:first-child:hover {
     color: #55026e;
     background: #26b04b;
+}
+
+.home .home-box nav .log-out a:hover {
+    color: aqua;
+    background: #175fc4;
 }
 
 .home .home-box .content {

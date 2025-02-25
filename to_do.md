@@ -1,8 +1,7 @@
 ### To be done
  - add buttons around the 
-    --> logout button
-    --> signup button
-    --> and all of the buttons
+    --> links of register & the login one
+    --> other links
 
  - add home urls to the rest of the templates
  - work on the about us section together with its templates
