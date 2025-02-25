@@ -21,8 +21,7 @@
     color: var(--white-color);
 }
 
-html,
-body {
+html, body {
     width: 100%;
     height: 100%;
 }
@@ -132,7 +131,7 @@ section.home {
 }
 
 .home .home-box nav .menu ul li a:hover {
-    color: rgb(255 255 255/70%);
+    color: #00cee4;
 }
 
 .home .home-box nav .signup-login {
@@ -154,12 +153,17 @@ section.home {
 }
 
 .home .home-box nav .signup-login a:hover {
-    color: rgb(255 255 255/70%);
+    color: #1f19c9; 
 }
 
 .home .home-box nav .signup-login a:last-child:hover {
-    color: var(--white-color);
-    background: #02636e;
+    color: #26b04b;
+    background: #55026e;
+}
+
+.home .home-box nav .signup-login a:first-child:hover {
+    color: #55026e;
+    background: #26b04b;
 }
 
 .home .home-box .content {
