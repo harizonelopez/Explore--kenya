@@ -21,8 +21,8 @@
  1. Clone the repository
 
  ```sh
-  git clone https://github.com/harizonelopez/Explore-kenya.git
-  cd Explore-kenya
+  git clone https://github.com/harizonelopez/Explore--kenya.git
+  cd Explore--kenya
  ```
 
  2. Create a virtual environment and activate it:
