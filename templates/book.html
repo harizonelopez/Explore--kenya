@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Kenya - Destination Booking</title>
+    <title>Travel Kenya - Destination booking</title>
     <style>
-        /* General Styles */
+        /* General format styles */
         body {
             display: flex;
             font-family: 'Arial', sans-serif;
@@ -18,7 +18,6 @@
             text-align: left;
             min-height: 100vh;
         }
-
         section {
             max-width: 800px;
             width: 90%;
@@ -28,40 +27,32 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             border-radius: 15px;
         }
-
         h1, h2 {
             color: #61dafb;
         }
-
         h3 {
             line-height: 1.6;
             color: #FF1493;
         }
-
         p {
             line-height: 1.6;
             color: #a4acc4;
         }
-
         a {
             color: #00FF00;
             text-decoration: none;
         }
-
         a:hover {
             border-bottom: 2px solid #FF6347;
         }
-
         .form-group {
             margin-bottom: 20px;
         }
-
         label {
             display: block;
             margin-bottom: 5px;
             color: #61dafb;
         }
-
         input[type="text"],
         input[type="number"],
         input[type="date"],
@@ -75,14 +66,11 @@
             color: #fff;
             box-sizing: border-box;
         }
-
-        input:focus,
-        select:focus {
+        input:focus, select:focus {
             outline: none;
             border-color: #61dafb;
             box-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
         }
-
         select {
             appearance: none;
             background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23fff" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
@@ -90,7 +78,6 @@
             background-position: right 10px center;
             background-size: 10px;
         }
-
         button {
             background-color: #61dafb;
             color: #282c35;
@@ -101,20 +88,64 @@
             transition: background-color 0.3s;
             box-shadow: 0 4px 10px rgba(97, 218, 251, 0.3);
         }
-
         button:hover {
             background-color: #21a1f1;
         }
-
         button:active {
             transform: translateY(1px);
             box-shadow: 0 4px 8px rgba(97, 218, 251, 0.2);
         }
-
         .btn-success a {
             color: #fff;
         }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #61dafb;
+        }
+        .checkbox-group label {
+            color: #a4acc4;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+        .checkbox-group a {
+            color: #00FF00;
+            text-decoration: underline;
+        }
+        .checkbox-group a:hover {
+            color: #FF6347;
+        }
+        .flash-container {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            text-align: center;
+            padding: 10px;
+        }
 
+        .alert {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #1bb666;
+            border: 1px solid #c3e6cb;
+        }
         footer {
             background-color: #1e2229;
             color: turquoise;
@@ -126,8 +157,29 @@
     </style>
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show fade-out" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <script>
+      setTimeout(function() {
+          let alerts = document.querySelectorAll('.alert');
+          alerts.forEach(function(alert) {
+              alert.classList.remove('show');  // Bootstrap's fade-out
+              alert.classList.add('fade');  // Additional smooth fade
+              setTimeout(() => alert.remove(), 500);  // Remove from DOM after fade
+          });
+      }, 3000);  // 3 seconds timer
+    </script>    
     <section>
-        <h1 align="center">Destination Booking Page</h1>
+        <h1 align="center">Book your Tour & Adventure Destination</h1>
         <section>
             <h3>Enter your desired destination details:</h3>
             <form method="POST" action="{{ url_for('booking') }}">
@@ -140,7 +192,6 @@
                         name="destination" required
                         placeholder="Enter destination here!">
                 </div>
-
                 <div class="form-group">
                     <label for="cost">Cost:</label>
                     <input 
@@ -150,7 +201,6 @@
                         name="cost" required
                         placeholder="Enter cost here!">
                 </div>
-
                 <div class="form-group">
                     <label for="date">Date:</label>
                     <input 
@@ -159,7 +209,6 @@
                         id="date" 
                         name="date" required>
                 </div>
-
                 <div class="form-group">
                     <label for="time">Time:</label>
                     <input 
@@ -168,7 +217,6 @@
                         id="time" 
                         name="time" required>
                 </div>
-
                 <div class="form-group">
                     <label for="phone_number">Phone Number:</label>
                     <input 
@@ -178,7 +226,6 @@
                         name="phone_number" required
                         placeholder="Enter phone number here!">
                 </div>
-
                 <div class="form-group">
                     <label for="mode">Select your preference:</label>
                     <select id="mode" name="mode" required>
@@ -187,7 +234,6 @@
                         <option value="group">Group/Family</option> 
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="number">If group/family, enter the number of people involved:</label>
                     <input 
@@ -197,8 +243,17 @@
                         name="number"
                         placeholder="Enter number of people here!">
                 </div>
+                <section>
+                    <div class="form-group checkbox-group">
+                        <input 
+                            type="checkbox" 
+                            id="terms" 
+                            name="terms" required>
+                        <label for="terms">I accept the Terms & Conditions and Privacy Policy, payment, cancellation and refund conditions.</label>
+                    </div>
 
-                <button type="submit" class="btn btn-primary">Book</button>
+                    <button type="submit" class="btn btn-primary">Book Now</button>
+                </section>
             </form>
         </section>
 
