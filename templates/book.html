@@ -1,9 +1,11 @@
-{% extends "base.html" %}
-{% block title %} Travel Kenya {% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Kenya - Destination Booking</title>
     <style>
+        /* General Styles */
         body {
             display: flex;
             font-family: 'Arial', sans-serif;
@@ -14,31 +16,17 @@
             align-items: center;
             flex-direction: column;
             text-align: left;
-        }
-
-        header {
-            background-color: #1e2229;
-            text-align: center;
-            padding: 1em;
+            min-height: 100vh;
         }
 
         section {
             max-width: 800px;
+            width: 90%;
             margin: 20px auto;
             padding: 20px;
             background-color: #373c49;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-
-        footer {
-            background-color: #1e2229;
-            color: turquoise;
-            text-align: center;
-            padding: 0em 0;
-            position: fixed;
-            bottom: 0;
-            width: 65%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
         }
 
         h1, h2 {
@@ -63,81 +51,166 @@
         a:hover {
             border-bottom: 2px solid #FF6347;
         }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #61dafb;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #555;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #61dafb;
+            box-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+        }
+
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23fff" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px;
+        }
+
+        button {
+            background-color: #61dafb;
+            color: #282c35;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(97, 218, 251, 0.3);
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 4px 8px rgba(97, 218, 251, 0.2);
+        }
+
+        .btn-success a {
+            color: #fff;
+        }
+
+        footer {
+            background-color: #1e2229;
+            color: turquoise;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 20px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <section>
-        <h1 align="center">Destination Booking page</h1>
+        <h1 align="center">Destination Booking Page</h1>
         <section>
             <h3>Enter your desired destination details:</h3>
             <form method="POST" action="{{ url_for('booking') }}">
                 <div class="form-group">
-                    <label for="email">Destination:</label>
+                    <label for="destination">Destination:</label>
                     <input 
                         type="text" 
                         class="form-control"
                         id="destination" 
                         name="destination" required
-                        placeholder="Enter destination here !">
-                    <br>
+                        placeholder="Enter destination here!">
+                </div>
+
+                <div class="form-group">
                     <label for="cost">Cost:</label>
                     <input 
                         type="number" 
                         class="form-control"
                         id="cost" 
                         name="cost" required
-                        placeholder="Enter cost here !">
-                    <br> 
+                        placeholder="Enter cost here!">
+                </div>
+
+                <div class="form-group">
                     <label for="date">Date:</label>
                     <input 
                         type="date" 
                         class="form-control"
                         id="date" 
-                        name="date" required
-                        placeholder="Enter date here !">
-                    <br>
+                        name="date" required>
+                </div>
+
+                <div class="form-group">
                     <label for="time">Time:</label>
                     <input 
                         type="time" 
                         class="form-control"
                         id="time" 
-                        name="time" required
-                        placeholder="Enter time here !">
-                    <br>
-                    <label for="phone_number">Phone number:</label>
+                        name="time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone_number">Phone Number:</label>
                     <input 
                         type="number" 
                         class="form-control"
                         id="phone_number" 
                         name="phone_number" required
-                        placeholder="Enter phone number here !">
-                    <br>
+                        placeholder="Enter phone number here!">
+                </div>
+
+                <div class="form-group">
                     <label for="mode">Select your preference:</label>
-                    <select>
+                    <select id="mode" name="mode" required>
+                        <option value="">Choose...</option>
                         <option value="individual">Individual</option> 
                         <option value="group">Group/Family</option> 
-                    </select required>
-                    <label for="number">If group/family, enter the number of people involved</label>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="number">If group/family, enter the number of people involved:</label>
                     <input 
                         type="number" 
                         class="form-control"
                         id="number" 
                         name="number"
-                        placeholder="Enter number of people here !">
-                    <br>
+                        placeholder="Enter number of people here!">
                 </div>
-                
+
                 <button type="submit" class="btn btn-primary">Book</button>
             </form>
         </section>
-    
-        <h5 align="center"><button class="btn btn-success"><a href="{{ url_for('home') }}">Return to the homepage</a></button></h5>
+
+        <h5 align="center">
+            <button class="btn btn-success">
+                <a href="{{ url_for('home') }}">Homepage</a>
+            </button>
+        </h5>
 
         <footer>
-            <p>&copy; 2025 Dev_aladinh production</p>
+            <p>&copy; 2025 Dev_aladinh Production</p>
         </footer>
-
     </section>
 </body>
 </html>
-{% endblock %}

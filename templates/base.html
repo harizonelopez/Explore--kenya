@@ -1,4 +1,3 @@
-<!--
 <!DOCTYPE html>
 <html>
   <head>
@@ -79,16 +78,5 @@
       crossorigin="anonymous">
     </script>
 
-    <script>
-      setTimeout(function() {
-          let alerts = document.querySelectorAll('.alert');
-          alerts.forEach(function(alert) {
-              alert.classList.remove('show');  // Bootstrap's fade-out
-              alert.classList.add('fade');  // Additional smooth fade
-              setTimeout(() => alert.remove(), 500);  // Remove from DOM after fade
-          });
-      }, 3000);  // 3 seconds timer
-    </script>
   </body>
 </html>
-  -->
