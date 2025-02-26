@@ -5,7 +5,6 @@
 
  - work on the about us section together with its templates
  - work on the entry text words for the prompts
- - work on the book section template
  - advance the contact template
    --> add flash
    --> add more user feedback inbuilt-texts
