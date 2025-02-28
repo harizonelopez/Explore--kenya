@@ -134,6 +134,12 @@
             border: 1px solid #c3e6cb;
         }
 
+        .alert-danger {
+            background-color: #d4edda;
+            color: red;
+            border: 1px solid #c3e6cb;
+        }
+
         .alert-success:hover {
             background-color: #c3e6cb;
         }
@@ -184,7 +190,7 @@
               alert.classList.add('fade');
               setTimeout(() => alert.remove(), 500);
           });
-      }, 3000);
+      }, 5000); // the flash message fades away after 5 seconds
     </script>    
 
     <div class="container">

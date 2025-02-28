@@ -95,7 +95,7 @@ def login():
             login_user(user)
             return redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Email or password mismatch', 'danger')
+            flash('Login unsuccessful, email or password mismatch', 'danger')
             return redirect(url_for('login'))
 
     return render_template('login.html')
