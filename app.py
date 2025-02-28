@@ -150,7 +150,7 @@ def reset_password():
             flash('Passwords do not match!', 'danger')
             return redirect(url_for('reset_password'))
 
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email).first() # Checks if the user email exists in the database
 
         if user:
             user.password = generate_password_hash(new_password)  # Hashing the password for security
