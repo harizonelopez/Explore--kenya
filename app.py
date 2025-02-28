@@ -160,5 +160,9 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+@app.route('/careers')
+def careers():
+    return flash('Currently not hiring', 'success')
+
 if __name__ == "__main__":
     app.run(debug=True)
