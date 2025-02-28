@@ -36,7 +36,6 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), nullable=False) # Can be duplicated
     email = db.Column(db.String(120), unique=True, nullable=False)  # Email must be unique
     password = db.Column(db.String(200), nullable=False)
-    # is_active = db.Column(db.Boolean, default=True) 
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -68,7 +67,7 @@ def signup():
 
         existing_user = User.query.filter_by(email=email).first()
         if existing_user:
-            flash('Email address is already registered, Please use a different one.', 'danger')
+            flash('Email address is already registered, Please use a different one/login instead.', 'danger')
             return redirect(url_for('signup'))
         
         new_user = User(username=username, email=email, password=generate_password_hash(password))
@@ -77,7 +76,7 @@ def signup():
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
-            flash('An error occurred. Please try again.', 'danger')
+            flash('An error occurred. Please use a different user-name and try again.', 'danger')
             return redirect(url_for('signup'))
 
         flash('User account created successfully! Login now', 'success')
@@ -126,7 +125,7 @@ def contact():
         msg = Message(
             subject=f"New Contact Form Message from {name}",
             recipients=['Harizonelopez23@gmail.com'],  # The email where you receive the messages
-            body=f" Hey my name is, {(name).upper()}\nEmail address: {email}\n\nMy message is:\n {message}"  # The email-message composition
+            body=f" Hey my name is, {(name).upper()}\nEmail address: {(email).lower()}\n\nMy message is:\n {message}"  # The email-message composition
         )
         # Send the email
         try:
