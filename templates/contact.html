@@ -113,6 +113,28 @@
     </style>
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show fade-out" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <script>
+      setTimeout(function() {
+          let alerts = document.querySelectorAll('.alert');
+          alerts.forEach(function(alert) {
+              alert.classList.remove('show');  // Bootstrap's fade-out
+              alert.classList.add('fade');  // Additional smooth fade
+              setTimeout(() => alert.remove(), 500);  // Remove from DOM after fade
+          });
+      }, 3000);  // 3 seconds timer
+    </script>
+    
     <h1>Contact Us</h1>
     <div class="contact-container">
         <h2>Get in Touch</h2>
