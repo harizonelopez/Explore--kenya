@@ -110,6 +110,28 @@
         .contact-form button:active {
             transform: translateY(1px);
         }
+        .flash-container {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            text-align: center;
+            padding: 10px;
+        }
+        .alert {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #1bb666;
+            border: 1px solid #c3e6cb;
+        }
     </style>
 </head>
 <body>
@@ -134,7 +156,7 @@
           });
       }, 3000);  // 3 seconds timer
     </script>
-    
+
     <h1>Contact Us</h1>
     <div class="contact-container">
         <h2>Get in Touch</h2>
