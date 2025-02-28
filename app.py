@@ -122,26 +122,23 @@ def contact():
         name = request.form['name']
         email = request.form['email']
         message = request.form['message']
-        
         # Compose the email
         msg = Message(
             subject=f"New Contact Form Message from {name}",
             recipients=['Harizonelopez23@gmail.com'],  # The email where you receive the messages
-            body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
+            body=f" Hey my name is, {(name).upper()}\nEmail address: {email}\n\nMy message is:\n {message}"  # The email-message composition
         )
-        
         # Send the email
         try:
             mail.send(msg)
             flash('Your message has been sent successfully!', 'success')
         except Exception as e:
             flash('An error occurred while sending your message. Please try again later.', 'danger')
-            print(e)  # For debugging purposes
+            print(e)  # For debugging purposes, terminal output
         
         return redirect(url_for('contact'))
     
     return render_template('contact.html')
-
 
 @app.route('/_policy')
 def policy():
