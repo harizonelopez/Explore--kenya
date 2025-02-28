@@ -139,6 +139,30 @@ def contact():
     
     return render_template('contact.html')
 
+@app.route('/reset', methods=['GET', 'POST'])
+def reset_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        new_password = request.form['new_password']
+        confirm_password = request.form['confirm_password']
+
+        if new_password != confirm_password:
+            flash('Passwords do not match!', 'danger')
+            return redirect(url_for('reset_password'))
+
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            user.password = generate_password_hash(new_password)  # Hashing the password for security
+            db.session.commit()
+            flash('Password reset successfully!', 'success')
+            return redirect(url_for('login'))
+        else:
+            flash('Email not found!', 'danger')
+            return redirect(url_for('reset_password'))
+
+    return render_template('reset.html')
+
 @app.route('/_policy')
 def policy():
     return render_template('policy.html')
@@ -159,10 +183,6 @@ def terms():
 def logout():
     logout_user()
     return redirect(url_for('home'))
-
-@app.route('/reset')
-def reset_password():
-    return render_template('reset.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
