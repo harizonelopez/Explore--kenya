@@ -54,12 +54,13 @@
         }
 
         a {
-            color: #3498db;
+            color: #2713d6;
             text-decoration: none;
         }
 
         a:hover {
-            border-bottom: 2px solid #3498db;
+            color: #890daf;
+            border-bottom: 2px solid;
         }
 
         /* Form Styles */
@@ -194,7 +195,7 @@
     </script>    
 
     <div class="container">
-        <h2>Login</h2>
+        <h2>Login</h2><br>
         <h3>Enter your details:</h3>
         <form method="POST" action="{{ url_for('login') }}">
             <label for="email">Email:</label>
@@ -217,6 +218,7 @@
         </form>
 
         <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+        <p>Forgot your password? <a href="{{ url_for('reset_password') }}">Reset it here</a></p>
 
         <footer>
             <p>&copy; 2025 Dev_aladinh Production</p>

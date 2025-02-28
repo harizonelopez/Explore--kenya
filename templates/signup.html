@@ -54,12 +54,13 @@
         }
 
         a {
-            color: #3498db;
+            color: #2713d6;
             text-decoration: none;
         }
 
         a:hover {
-            border-bottom: 2px solid #3498db;
+            color: #890daf;
+            border-bottom: 2px solid;
         }
 
         /* Form Styles */
@@ -179,10 +180,6 @@
             {% for category, message in messages %}
                 <div class="alert alert-{{ category }} alert-dismissible fade show fade-out" role="alert">
                     {{ message }}
-                    <!--
-                    <button type="button" class="close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
-                    </button> -->
                 </div>
             {% endfor %}
         </div>
@@ -200,7 +197,7 @@
     </script>    
 
     <div class="container">
-        <h2>Sign Up</h2>
+        <h2>Sign Up</h2><br>
         <h3>Join us today:</h3>
         <form method="POST" action="{{ url_for('signup') }}">
             <label for="username">Username:</label>
@@ -231,6 +228,7 @@
         </form>
 
         <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+        <p>Forgot your password? <a href="{{ url_for('reset_password') }}">Reset it here</a></p>
 
         <footer>
             <p>&copy; 2025 Dev_aladinh Production</p>
