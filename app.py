@@ -150,6 +150,10 @@ def reset_password():
         new_password = request.form['new_password']
         confirm_password = request.form['confirm_password']
 
+        if not is_valid_password(new_password):
+            flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
+            return render_template('reset.html')
+
         if new_password != confirm_password:
             flash('Passwords do not match!', 'danger')
             return redirect(url_for('reset_password'))
@@ -166,7 +170,7 @@ def reset_password():
             return redirect(url_for('reset_password'))
 
     return render_template('reset.html')
-
+"""
 def reset_password():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -186,7 +190,7 @@ def reset_password():
         return render_template('login.html')
 
     return render_template('reset.html')
-
+"""
 @app.route('/_policy')
 def policy():
     return render_template('policy.html')
