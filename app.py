@@ -4,7 +4,6 @@ from flask_login import login_user, UserMixin, logout_user, LoginManager, curren
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
-import re
 from flask_mail import Mail, Message
 from sqlalchemy.exc import IntegrityError
 
@@ -90,9 +89,12 @@ def signup():
             db.session.rollback()
             flash('An error occurred. Please use a different user-name and try again.', 'danger')
             return redirect(url_for('signup'))
+        
+        # Automatically Logs in the user
+        login_user(new_user)
 
-        flash('User account created successfully! Login now', 'success')
-        return redirect(url_for('login'))
+        flash(f'Signup successfull! Welcome {username}', 'success')
+        return redirect(url_for('home'))
     
     return render_template('signup.html')
 
@@ -169,9 +171,9 @@ def reset_password():
         user = User.query.filter_by(email=email).first() # Checks if the user email exists in the database
 
         if user:
-            user.password = generate_password_hash(new_password)  # Hashing the password for security
+            user.password = generate_password_hash(new_password)  # Hashing the password for security reasons
             db.session.commit()
-            flash('Password reset successfully!, Login now', 'success')
+            flash('Password reset successfully! Login now', 'success')
             return redirect(url_for('login'))
         else:
             flash('No account found with that email!', 'danger')
