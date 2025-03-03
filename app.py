@@ -54,7 +54,7 @@ def get_flash_messages():
     messages = get_flashed_messages()
     return [(message, 'info') for message in messages]  
 
-def is_valid_password(password):
+def valid_password(password):
     return re.match(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", password)
 
 @app.route('/')
@@ -69,8 +69,9 @@ def signup():
         email = request.form['email']
         password = request.form['password']
         
-        if not is_valid_password(password):  # Validate the password if it meets the password criteria
-            flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
+        # Password validation (8+ characters, at least one number & special character)
+        if len(password) < 8 or not any(char.isdigit() for char in password) or not any(char in "!@#$%^&*()_+" for char in password):
+            flash("Password must be at least 8 characters long, include a number and a special character.", "danger")
             return redirect(url_for('signup'))
 
         existing_user = User.query.filter_by(email=email).first()
@@ -154,7 +155,7 @@ def reset_password():
         new_password = request.form['new_password']
         confirm_password = request.form['confirm_password']
         
-        if not is_valid_password(new_password):  # Validate the password if it meets the password criteria
+        if not valid_password(new_password):  # Validate the password if it meets the password criteria
             flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
             return render_template('reset.html')
 
