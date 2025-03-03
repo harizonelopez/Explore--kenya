@@ -3,6 +3,6 @@
     --> 
     --> 
 
- - work on the about us section together with its templates(afterwards not know)
- - work on the password integrity
+ - work on the about us section together with its templates - AFTERWARDS NOT NOW
+ - 
  - the search area and its button
