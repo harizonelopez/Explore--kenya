@@ -93,7 +93,7 @@ def signup():
         # Automatically Logs in the user
         login_user(new_user)
 
-        flash(f'Signup successfull! Welcome {username}', 'success')
+        flash(f'Signup successfull! Welcome Abord {username.upper()}', 'success')
         return redirect(url_for('home'))
     
     return render_template('signup.html')
@@ -107,7 +107,8 @@ def login():
 
         if user and check_password_hash(user.password, password):
             login_user(user)
-            flash(f'Login successfull! Welcome {username}', 'success')
+            user_name = user.username
+            flash(f'Login successfull! Welcome Abord {user_name.upper()}', 'success')
             return redirect(url_for('home'))
         else:
             flash('Login unsuccessful, email or password mismatch', 'danger')
@@ -221,6 +222,8 @@ def terms():
 @app.route('/logout')  
 def logout():
     logout_user()
+    flash(f'You have been logged out successfully!', 'info')
+
     return redirect(url_for('home'))
 
 if __name__ == "__main__":

@@ -61,6 +61,12 @@ section {
     border: 1px solid #c3e6cb;
 }
 
+.alert-info {
+    background-color: #d4edda;
+    color: #510ee2;
+    border: 1px solid #c3e6cb;
+}
+
 .label {
     font-size: 2rem;
     color: #666;

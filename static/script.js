@@ -89,15 +89,6 @@ function galleryAnimation(triggerSelector, boxSelectors) {
     });
 }
 
-setTimeout(function() {
-    let alerts = document.querySelectorAll('.alert');
-    alerts.forEach(function(alert) {
-        alert.classList.remove('show');  // Bootstrap's fade-out
-        alert.classList.add('fade');  // Additional smooth fade
-        setTimeout(() => alert.remove(), 500);  // Remove from DOM after fade
-    });
-}, 5000);  // 5 seconds timer
-
 
 animateContent([".home .content h5, .home .content h1, .home .content p, .home .content .search"]);
 
