@@ -223,7 +223,6 @@ def terms():
 def logout():
     logout_user()
     flash(f'You have been logged out successfully!', 'info')
-
     return redirect(url_for('home'))
 
 if __name__ == "__main__":
