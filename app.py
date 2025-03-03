@@ -73,13 +73,9 @@ def signup():
         password = request.form['password']
 
         # Password validation (8+ characters, at least one number & special character)
-        if not valid_password(password):  # Validate the password if it meets the password criteria
+        if not valid_password(password):  # Validate the password
             flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
-            return render_template('reset.html')
-        
-        #if len(password) < 8 or not any(char.isdigit() for char in password) or not any(char in "!@#$%^&*.,/|\()_+" for char in password):
-        #    flash("Password must be at least 8 characters long, include a number and a special character.", "danger")
-        #    return redirect(url_for('signup'))
+            return redirect(url_for('signup'))
 
         existing_user = User.query.filter_by(email=email).first()
         if existing_user:
