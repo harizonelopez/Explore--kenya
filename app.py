@@ -69,7 +69,7 @@ def home():
 def signup():
     if request.method == "POST":
         username = request.form['username']
-        email = request.form['email']
+        email = request.form['email'].lower()
         password = request.form['password']
 
         # Password validation (8+ characters, at least one number & special character)
@@ -99,7 +99,7 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])  
 def login():    
     if request.method == 'POST':
-        email = request.form['email']
+        email = request.form['email'].lower()
         password = request.form['password']
         user = User.query.filter_by(email=email).first()
 
@@ -131,7 +131,7 @@ def booking():
 def contact():
     if request.method == 'POST':
         name = request.form['name']
-        email = request.form['email']
+        email = request.form['email'].lower()
         message = request.form['message']
         # Compose the email
         msg = Message(
@@ -154,7 +154,7 @@ def contact():
 @app.route('/reset', methods=['GET', 'POST'])
 def reset_password():
     if request.method == 'POST':
-        email = request.form['email']
+        email = request.form['email'].lower()
         new_password = request.form['new_password']
         confirm_password = request.form['confirm_password']
         
