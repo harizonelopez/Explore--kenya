@@ -4,6 +4,7 @@ from flask_login import login_user, UserMixin, logout_user, LoginManager, curren
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+import re
 from flask_mail import Mail, Message
 from sqlalchemy.exc import IntegrityError
 
@@ -52,6 +53,9 @@ login_manager.login_message_category = 'danger' # Shows the danger message if th
 def get_flash_messages():
     messages = get_flashed_messages()
     return [(message, 'info') for message in messages]  
+
+def is_valid_password(password):
+    return re.match(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", password)
 
 @app.route('/')
 def home():
@@ -160,6 +164,26 @@ def reset_password():
         else:
             flash('Email not found!', 'danger')
             return redirect(url_for('reset_password'))
+
+    return render_template('reset.html')
+
+def reset_password():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+
+        if not is_valid_password(password):
+            flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
+            return render_template('reset.html')
+
+        if password != confirm_password:
+            flash("Passwords do not match.", "danger")
+            return render_template('reset.html')
+
+        # Update password logic goes here...
+        flash("Password reset successfully!", "success")
+        return render_template('login.html')
 
     return render_template('reset.html')
 
