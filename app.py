@@ -171,7 +171,7 @@ def reset_password():
         if user:
             user.password = generate_password_hash(new_password)  # Hashing the password for security
             db.session.commit()
-            flash('Password reset successfully!', 'success')
+            flash('Password reset successfully!, Login now', 'success')
             return redirect(url_for('login'))
         else:
             flash('No account found with that email!', 'danger')
