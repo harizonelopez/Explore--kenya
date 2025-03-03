@@ -68,6 +68,10 @@ def signup():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
+        
+        if not is_valid_password(password):  # Validate the password if it meets the password criteria
+            flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
+            return redirect(url_for('signup'))
 
         existing_user = User.query.filter_by(email=email).first()
         if existing_user:
@@ -149,8 +153,8 @@ def reset_password():
         email = request.form['email']
         new_password = request.form['new_password']
         confirm_password = request.form['confirm_password']
-
-        if not is_valid_password(new_password):
+        
+        if not is_valid_password(new_password):  # Validate the password if it meets the password criteria
             flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
             return render_template('reset.html')
 
@@ -166,7 +170,7 @@ def reset_password():
             flash('Password reset successfully!', 'success')
             return redirect(url_for('login'))
         else:
-            flash('Email not found!', 'danger')
+            flash('No account found with that email!', 'danger')
             return redirect(url_for('reset_password'))
 
     return render_template('reset.html')
