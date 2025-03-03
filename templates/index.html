@@ -6,6 +6,17 @@
     <title>Travel Kenya</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show fade-out" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
 </head>
 <body>
     <!----home section starts here---->

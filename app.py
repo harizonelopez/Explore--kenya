@@ -107,6 +107,7 @@ def login():
 
         if user and check_password_hash(user.password, password):
             login_user(user)
+            flash(f'Login successfull! Welcome {username}', 'success')
             return redirect(url_for('home'))
         else:
             flash('Login unsuccessful, email or password mismatch', 'danger')
