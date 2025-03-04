@@ -26,7 +26,7 @@
                 setTimeout(() => alert.remove(), 500);  // Remove from DOM after fade
             });
         }, 4000);  // 4 seconds timer for the flash mesaage to fade out
-    </script>
+    </script> <!--
     <script> // search function for the search bar
         function performSearch() {
             let destination = document.getElementById("searchInput").value;
@@ -36,7 +36,7 @@
                 alert("Please enter a destination.");
             }
         }
-    </script>
+    </script> -->
 </head>
 <body>
     <!----home section starts here---->
@@ -80,12 +80,14 @@
                 </p>
                 <div class="search">
                     <input 
-                        type="text" 
+                        type="search" 
                         id="searchInput" 
-                        placeholder="Search your destination here..." required>
-                    <button onclick="performSearch()">
+                        placeholder="Search your destination here" 
+                        required>
+                    <button type="submit"><a href="{{ url_for('search') }}">search</a></button>
+                    <!--<button onclick="performSearch()">
                         <i class="fa fa-search"></i> Search
-                    </button>
+                    </button>-->
                 </div>
             </div>
         </div>

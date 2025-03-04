@@ -58,6 +58,13 @@ def valid_password(password):
             return False
         return True
 
+destinations = {
+    "Nairobi": {"cost": 5000, "time": "10:00 AM", "status": "available"},
+    "Mombasa": {"cost": 10000, "time": "3:00 PM", "status": "booked"},
+    "Diani": {"cost": 12000, "time": "2:00 PM", "status": "available"},
+    "Kisumu": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
+}
+
 @app.route('/')
 def home():
     flash_messages = get_flash_messages()
@@ -184,9 +191,21 @@ def reset_password():
 
 @app.route('/search')
 def search():
-    
-    return redirect(url_for('home'))
-    # return render_template('index.html')
+    query = request.args.get('q', '').strip().title()  # Title case for matching
+    if not query:
+        flash("Please enter a destination to search!", "warning")
+        return redirect(url_for('home'))  # Redirect if no query
+
+    if query in destinations:
+        destination = destinations[query]
+        if destination["status"] == "booked":
+            flash(f"Sorry, {query} is already booked!", "danger")
+        else:
+            flash(f"Good news! {query} is available for booking.", "success")
+        return render_template('booking.html', destination=destination, query=query)
+    else:
+        flash("Destination not found. Try a different one.", "warning")
+        return redirect(url_for('home'))
 
 @app.route('/_policy')
 def policy():
