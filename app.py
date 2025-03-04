@@ -54,7 +54,7 @@ def get_flash_messages():
     return [(message, 'info') for message in messages]  
 
 def valid_password(password):
-        if len(password) < 8 or not any(char.isdigit() for char in password) or not any(char in "!@#$%^&*.,/|\()_+" for char in password):
+        if len(password) < 8 or not any(char.isdigit() for char in password) or not any(char in "!@#$%^&*.,/|()_+" for char in password):
             return False
         return True
 
