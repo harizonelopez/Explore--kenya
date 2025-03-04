@@ -78,17 +78,19 @@
                 <p>discover inspiring destinations, create unforgettable memories,
                     and travel with confidence - adventure starts here only with DNI Tours & Adventures Ltd.
                 </p>
-                <div class="search">
-                    <input 
-                        type="search" 
-                        id="searchInput" 
-                        placeholder="Search your destination here" 
-                        required>
-                    <button type="submit"><a href="{{ url_for('search') }}">search</a></button>
-                    <!--<button onclick="performSearch()">
-                        <i class="fa fa-search"></i> Search
-                    </button>-->
-                </div>
+                <form action="{{ url_for('search') }}" method="GET">
+                    <div class="search">
+                        <input 
+                            type="search" 
+                            id="searchInput" 
+                            name="q"  
+                            placeholder="Search your destination here" 
+                            required>
+                        <button type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                    </div>
+                </form>                
             </div>
         </div>
     </section>

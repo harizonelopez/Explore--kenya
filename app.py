@@ -202,7 +202,7 @@ def search():
             flash(f"Sorry, {query} is already booked!", "danger")
         else:
             flash(f"Good news! {query} is available for booking.", "success")
-        return render_template('booking.html', destination=destination, query=query)
+        return render_template('index.html', destination=destination, query=query)
     else:
         flash("Destination not found. Try a different one.", "warning")
         return redirect(url_for('home'))
