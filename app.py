@@ -181,27 +181,13 @@ def reset_password():
             return redirect(url_for('reset_password'))
 
     return render_template('reset.html')
-"""
-def reset_password():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
-        confirm_password = request.form.get('confirm_password')
 
-        if not is_valid_password(password):
-            flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
-            return render_template('reset.html')
+@app.route('/search')
+def search():
+    
+    return redirect(url_for('home'))
+    # return render_template('index.html')
 
-        if password != confirm_password:
-            flash("Passwords do not match.", "danger")
-            return render_template('reset.html')
-
-        # Update password logic goes here...
-        flash("Password reset successfully!", "success")
-        return render_template('login.html')
-
-    return render_template('reset.html')
-"""
 @app.route('/_policy')
 def policy():
     return render_template('policy.html')

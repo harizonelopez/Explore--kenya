@@ -25,7 +25,17 @@
                 alert.classList.add('fade');  // Additional smooth fade
                 setTimeout(() => alert.remove(), 500);  // Remove from DOM after fade
             });
-        }, 4000);  // 4 seconds timer
+        }, 4000);  // 4 seconds timer for the flash mesaage to fade out
+    </script>
+    <script> // search function for the search bar
+        function performSearch() {
+            let destination = document.getElementById("searchInput").value;
+            if (destination.trim() !== "") {
+                window.location.href = "{{ url_for('search') }}?q=" + encodeURIComponent(destination);
+            } else {
+                alert("Please enter a destination.");
+            }
+        }
     </script>
 </head>
 <body>
@@ -69,9 +79,13 @@
                     and travel with confidence - adventure starts here only with DNI Tours & Adventures Ltd.
                 </p>
                 <div class="search">
-                    <i class="fa fa-search"></i>
-                    <input placeholder="book your destination with us..">
-                    <button><a href="{{ url_for('booking') }}">book</a></button>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search your destination here..." required>
+                    <button onclick="performSearch()">
+                        <i class="fa fa-search"></i> Search
+                    </button>
                 </div>
             </div>
         </div>
