@@ -57,7 +57,6 @@ def valid_password(password):
         if len(password) < 8 or not any(char.isdigit() for char in password) or not any(char in "!@#$%^&*.,/|\()_+" for char in password):
             return False
         return True
-    # return re.match(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", password)
 
 @app.route('/')
 def home():
