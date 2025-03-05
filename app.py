@@ -70,7 +70,7 @@ destinations = {
     "Country": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
     "Surfing": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
     "Tahi": {"cost": 10999, "time": "1:00 PM", "status": "booked"},
-    "Eseriani": {"cost": 9499, "time": "1:00 PM", "status": "booked"},
+    "Eseriani": {"cost": 9499, "time": "1:00 PM", "status": "booked"}
 }
 
 @app.route('/')
