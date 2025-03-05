@@ -61,8 +61,16 @@ def valid_password(password):
 destinations = {
     "Nairobi": {"cost": 5000, "time": "10:00 AM", "status": "available"},
     "Mombasa": {"cost": 10000, "time": "3:00 PM", "status": "booked"},
-    "Diani": {"cost": 12000, "time": "2:00 PM", "status": "available"},
+    "Diani": {"cost": 11499, "time": "2:00 PM", "status": "available"},
     "Kisumu": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
+    "Maasai Mara": {"cost": 10449, "time": "1:00 PM", "status": "booked"},  
+    "Lake Turkana, Turkana": {"cost": 7000, "time": "1:00 PM", "status": "booked"}, 
+    "Wasini": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
+    "Amboseli": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
+    "Country": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
+    "Surfing": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
+    "Tahi": {"cost": 10999, "time": "1:00 PM", "status": "booked"},
+    "Eseriani": {"cost": 9499, "time": "1:00 PM", "status": "booked"},
 }
 
 @app.route('/')
