@@ -69,6 +69,10 @@ destinations = {
     "Wasini": {"cost": 11000, "time": "1:00 PM", "status": "available"},
     "Amboseli": {"cost": 10000, "time": "10:00 AM", "status": "booked"},
     "Country": {"cost": 6000, "time": "10:00 AM", "status": "booked"},
+    "Kilifi": {"cost": 10000, "time": "3:00 PM", "status": "available"},
+    "Lamu": {"cost": 12500, "time": "2:00 PM", "status": "available"},
+    "Malindi": {"cost": 11050, "time": "1:00 PM", "status": "booked"},
+    "hike": {"cost": 5000, "time": "10:00 AM", "status": "available"},
     "Surfing": {"cost": 7000, "time": "1:00 PM", "status": "available"},
     "Tahi": {"cost": 10999, "time": "2:00 PM", "status": "available"},
     "Eseriani": {"cost": 9499, "time": "2:00 PM", "status": "available"}
