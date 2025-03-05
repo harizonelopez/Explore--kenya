@@ -59,18 +59,19 @@ def valid_password(password):
         return True
 
 destinations = {
-    "Nairobi": {"cost": 5000, "time": "10:00 AM", "status": "available"},
+    "Nairobi": {"cost": 9000, "time": "10:00 AM", "status": "available"},
     "Mombasa": {"cost": 10000, "time": "3:00 PM", "status": "booked"},
     "Diani": {"cost": 11499, "time": "2:00 PM", "status": "available"},
     "Kisumu": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
-    "Maasai Mara": {"cost": 10449, "time": "1:00 PM", "status": "booked"},  
-    "Lake Turkana, Turkana": {"cost": 7000, "time": "1:00 PM", "status": "booked"}, 
-    "Wasini": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
-    "Amboseli": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
-    "Country": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
-    "Surfing": {"cost": 7000, "time": "1:00 PM", "status": "booked"},
-    "Tahi": {"cost": 10999, "time": "1:00 PM", "status": "booked"},
-    "Eseriani": {"cost": 9499, "time": "1:00 PM", "status": "booked"}
+    "Maasai Mara": {"cost": 10449, "time": "1:00 PM", "status": "available"},
+    "Naivasha": {"cost": 8000, "time": "12:00 PM", "status": "booked"},  
+    "Lake Turkana": {"cost": 5000, "time": "10:00 AM", "status": "available"}, 
+    "Wasini": {"cost": 11000, "time": "1:00 PM", "status": "available"},
+    "Amboseli": {"cost": 10000, "time": "10:00 AM", "status": "booked"},
+    "Country": {"cost": 6000, "time": "10:00 AM", "status": "booked"},
+    "Surfing": {"cost": 7000, "time": "1:00 PM", "status": "available"},
+    "Tahi": {"cost": 10999, "time": "2:00 PM", "status": "available"},
+    "Eseriani": {"cost": 9499, "time": "2:00 PM", "status": "available"}
 }
 
 @app.route('/')
