@@ -1,5 +1,6 @@
 # Explore Kenya Web Application
-    Explore Kenya is a Flask-based web application designed to assist tourists and visitors in exploring Kenya's breathtaking scenic attractions. The platform provides users with a seamless experience to discover, book, and plan visits to various destinations across the country.
+ Explore Kenya is a Flask-based web application designed to assist tourists and visitors in exploring Kenya's breathtaking scenic attractions. 
+ The platform provides users with a seamless experience to discover, book, and plan visits to various destinations across the country.
 
 
 ## Features
