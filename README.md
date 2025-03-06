@@ -93,14 +93,14 @@
 | /logout       | GET       | User logout                |
 | /destinations | GET       | View all destinations      |
 | /booking      | POST      | Book a destination         | 
-| /search       | GET       | Search foe destinations    |
+| /search       | GET       | Search for destinations    |
 | /reset        | POST      | Reset user password        |
-
+| /contact      | POST      | Reach out/send a message   |
 
 ## Future Enhancements
    - Add a payment gateway for online booking payments
    - Implement Google Maps API for interactive destination mapping
-   - Develop a review and rating system for users to share experiences
+   - Develop a review and rating system for users to share their experiences
    - Improve UI/UX design for better navigation and usability
 
 
