@@ -41,7 +41,12 @@ class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     destination = db.Column(db.String(100), nullable=False)
     cost = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    date = db.Column(db.String(20), nullable=False)
+    time = db.Column(db.String(10), nullable=False)
+    phone_number = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    mode = db.Column(db.String(50), nullable=False)
+    number_of_people = db.Column(db.Integer, nullable=True)
 
 with app.app_context():
     db.create_all()
@@ -140,14 +145,68 @@ def login():
 def booking():
     if request.method == 'POST':
         destination = request.form['destination']
-        cost = int(request.form['cost'])
+        cost = request.form['cost']
+        date = request.form['date']
+        time = request.form['time']
+        phone_number = request.form['phone_number']
+        email = request.form.get('email')
+        mode = request.form['mode']
+        number_of_people = request.form.get('number', 1)  # Default to 1 for individual bookings
+
+        payment_status = "Pending"  # Change this once payment is integrated
+        cancellation_policy_link = url_for('policy', _external=True) # External link to the policy page
+
+        # Save the booking details to the Database
+        new_booking = Booking(
+            destination=destination,
+            cost=cost,
+            date=date,
+            time=time,
+            phone_number=phone_number,
+            email=email,
+            mode=mode,
+            number_of_people=int(number_of_people) if number_of_people else None
+        )
         
-        new_booking = Booking(destination=destination, cost=cost, user_id=current_user.id)
         db.session.add(new_booking)
         db.session.commit()
 
-        flash(f'Hey {current_user.username}, you have successfully booked {destination} as your destination tour place.', 'success')
+        # Construct the email message
+        msg = Message("Booking Confirmation - Explore Kenya", 
+                      recipients=[email])
+
+        msg.body = f"""
+        Dear Explorer,
+
+        Your booking for {destination} has been confirmed!
+
+        **Booking Details:**
+        - Destination: {destination}
+        - Cost: {cost} KES
+        - Date: {date}
+        - Time: {time}
+        - Contact: {phone_number}
+        - Mode: {mode}
+        - Group Size: {number_of_people if mode == 'group' else 'N/A'}
+        - Payment Status: {payment_status}
+
+        If you wish to cancel or modify your booking, please review our policy:
+        {cancellation_policy_link}
+
+        Thank you for choosing Explore Kenya! We look forward to your visit.
+
+        Regards,
+        Explore Kenya Team
+        """
+
+        try:
+            mail.send(msg)
+            flash("Booking confirmed! A confirmation email has been sent.", "success")
+        except Exception as e:
+            flash(f"Error sending email: {str(e)}", "danger")
+
         return redirect(url_for('booking'))
+    
     return render_template('book.html')
 
 @app.route('/contact', methods=['GET', 'POST'])

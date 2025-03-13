@@ -57,6 +57,7 @@
         input[type="number"],
         input[type="date"],
         input[type="time"],
+        input[type="email"],
         select {
             width: 100%;
             padding: 10px;
@@ -131,7 +132,6 @@
             text-align: center;
             padding: 10px;
         }
-
         .alert {
             display: inline-block;
             padding: 15px 25px;
@@ -140,7 +140,6 @@
             font-size: 1.1rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
         .alert-success {
             background-color: #d4edda;
             color: #1bb666;
@@ -226,6 +225,15 @@
                         name="phone_number" required
                         placeholder="Enter phone number here!">
                 </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input 
+                        type="email" 
+                        class="form-control"
+                        id="email" 
+                        name="email" required
+                        placeholder="Enter your email here!">
+                </div>                
                 <div class="form-group">
                     <label for="mode">Select your preference:</label>
                     <select id="mode" name="mode" required>
