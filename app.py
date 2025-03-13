@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from flask_mail import Mail, Message
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import Session
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
@@ -29,7 +30,8 @@ login_manager = LoginManager(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    # return User.query.get(int(user_id))
+    return db.session.get(User, int(user_id))
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
