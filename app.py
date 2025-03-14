@@ -202,7 +202,7 @@ def booking():
 
         try:
             mail.send(msg)
-            flash("Booking confirmed! A confirmation email has been sent to your email.", "success")
+            flash("Booking confirmed! A confirmation email has been sent to you.", "success")
         except Exception as e:
             flash(f"Error sending email: {str(e)}", "danger")
 
