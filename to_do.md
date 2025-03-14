@@ -1,2 +1,10 @@
 ### To be done
  - For now I think everything is alright - only for future upgrades to be executed
+
+ ## Future upgrades
+  - Add a payment feature to be in use
+  - Phone number verification
+  - Use the current users's email without collecting it at the book template
+  - Use the inbuilt destination price without collecting it at the book template
+  - Use the place's destination name without collecting the data from the template
+  - Date restriction to not pass a predefined time period
