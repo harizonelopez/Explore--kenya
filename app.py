@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from flask_mail import Mail, Message
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Session
+# from sqlalchemy.orm import Session
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
@@ -143,7 +143,7 @@ def login():
     return render_template('login.html')
 
 @app.route('/booking', methods=['GET', 'POST'])
-@login_required # Redirects to the login page if the user is not logged in
+@login_required # Redirects the user to the login page if the user isn't logged in
 def booking():
     if request.method == 'POST':
         destination = request.form['destination']
@@ -193,7 +193,6 @@ def booking():
         - Payment Status: {payment_status}
 
         If you wish to cancel or modify your booking, please review our policy:
-        {cancellation_policy_link}
 
         Thank you for choosing Explore Kenya! We look forward to your visit.
 
@@ -203,7 +202,7 @@ def booking():
 
         try:
             mail.send(msg)
-            flash("Booking confirmed! A confirmation email has been sent.", "success")
+            flash("Booking confirmed! A confirmation email has been sent to your email.", "success")
         except Exception as e:
             flash(f"Error sending email: {str(e)}", "danger")
 
