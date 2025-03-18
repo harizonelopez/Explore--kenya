@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, url_for, get_flashed_messages
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import login_user, UserMixin, logout_user, LoginManager, current_user, login_required
+from flask_login import login_user, UserMixin, logout_user, LoginManager, login_required
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
