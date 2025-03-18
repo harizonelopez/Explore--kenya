@@ -6,7 +6,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from flask_mail import Mail, Message
 from sqlalchemy.exc import IntegrityError
-# from sqlalchemy.orm import Session
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
