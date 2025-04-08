@@ -1,7 +1,7 @@
-### To be done
+1. To be done
  - For now I think everything is alright - only for future upgrades to be executed
 
- ## Future upgrades
+2. Future upgrades
   - Add a payment feature to be in use
   - Phone number verification
   - Use the current users's email without collecting it at the book template

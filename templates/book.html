@@ -156,6 +156,7 @@
     </style>
 </head>
 <body>
+    <!-- Display of the messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         <div class="flash-container">
@@ -267,12 +268,12 @@
 
         <h5 align="center">
             <button class="btn btn-success">
-                <a href="{{ url_for('home') }}">Homepage</a>
+                <a href="{{ url_for('home') }}">Home</a>
             </button>
         </h5>
 
         <footer>
-            <p>&copy; 2025 Dev_aladinh Production</p>
+            <p>&copy; 2025 Dev_Aladinh Production</p>
         </footer>
     </section>
 </body>

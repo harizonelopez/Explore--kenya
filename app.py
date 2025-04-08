@@ -21,7 +21,7 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USERNAME'] = 'Harizonelopez23@gmail.com'
 app.config['MAIL_PASSWORD'] = 'xkfu aslr yswq bdbt'
-app.config['MAIL_DEFAULT_SENDER'] = 'DNI Tours & Adventures Ltd, Harizonelopez23@gmail.com'
+app.config['MAIL_DEFAULT_SENDER'] = 'DNI Tours & Adventures Ltd, harizonelopez23@gmail.com'
 
 mail = Mail(app)
 
@@ -35,7 +35,7 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False) # Can be duplicated
-    email = db.Column(db.String(120), unique=True, nullable=False)  # Email must be unique
+    email = db.Column(db.String(120), unique=True, nullable=False)  # Email ==> unique
     password = db.Column(db.String(200), nullable=False)
 
 class Booking(db.Model):
@@ -97,8 +97,8 @@ def signup():
         email = request.form['email'].lower()
         password = request.form['password']
 
-        # Password validation (8+ characters, at least one number & special character)
-        if not valid_password(password):  # Validate the password
+        # Password validation 
+        if not valid_password(password):  
             flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
             return redirect(url_for('signup'))
 
@@ -156,7 +156,7 @@ def booking():
         number_of_people = request.form.get('number', 1)  # Default to 1 for individual bookings
 
         payment_status = "Pending"  # Change this once payment is integrated
-        cancellation_policy_link = url_for('policy', _external=True) # External link to the policy page
+        # cancellation_policy_link = url_for('policy', _external=True) # External link to the policy page
 
         # Save the booking details to the Database
         new_booking = Booking(
@@ -219,7 +219,7 @@ def contact():
         # Compose the email
         msg = Message(
             subject=f"New Contact Form Message from {name}",
-            recipients=['Harizonelopez23@gmail.com'],  # The email where you receive the messages
+            recipients=['harizonelopez23@gmail.com'],  # The email where you receive the messages
             body=f" Hey my name is, {(name).upper()}\nEmail address: {(email).lower()}\n\nMy message is:\n {message}"  # The email-message composition
         )
         # Send the email
