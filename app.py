@@ -241,7 +241,7 @@ def reset_password():
         new_password = request.form['new_password']
         confirm_password = request.form['confirm_password']
         
-        if not valid_password(new_password):  # Validate the password if it meets the password criteria
+        if not valid_password(new_password):  # Validate the password 
             flash("Password must be at least 8 characters long and contain letters and numbers.", "danger")
             return render_template('reset.html')
 
