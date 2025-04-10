@@ -143,7 +143,7 @@ def login():
     return render_template('login.html')
 
 @app.route('/booking', methods=['GET', 'POST'])
-@login_required # Redirects the user to the login page if the user isn't logged in
+@login_required # Redirects to the login page if the user isn't logged in
 def booking():
     if request.method == 'POST':
         destination = request.form['destination']
