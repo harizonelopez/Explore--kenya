@@ -7,6 +7,7 @@ import os
 from flask_mail import Mail, Message
 from sqlalchemy.exc import IntegrityError
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_database.db'
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'aladinh00-010montext')
