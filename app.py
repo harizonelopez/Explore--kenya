@@ -30,12 +30,11 @@ login_manager = LoginManager(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    # return User.query.get(int(user_id))
     return db.session.get(User, int(user_id))
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), nullable=False) # Can be duplicated
+    username = db.Column(db.String(80), nullable=False) 
     email = db.Column(db.String(120), unique=True, nullable=False)  # Email ==> unique
     password = db.Column(db.String(200), nullable=False)
 
@@ -157,7 +156,6 @@ def booking():
         number_of_people = request.form.get('number', 1)  # Default to 1 for individual bookings
 
         payment_status = "Pending"  # Change this once payment is integrated
-        # cancellation_policy_link = url_for('policy', _external=True) # External link to the policy page
 
         # Save the booking details to the Database
         new_booking = Booking(
