@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Kenya - Contact Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* general template styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f8fc;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* container */
+        .contact-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            transition: transform 0.3s;
+        }
+        .contact-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #3498db;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            line-height: 1.6;
+            margin: 0.5rem 0;
+        }
+
+        /* contact info */
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .contact-info strong {
+            color: #2980b9;
+        }
+
+        /* form styles */
+        .contact-form {
+            margin-top: 1.5rem;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* button styles */
+        .contact-form button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            display: block;
+            width: 100%;
+        }
+        .contact-form button:hover {
+            background-color: #4d16bb;
+            transform: translateY(-3px);
+        }
+        .contact-form button:active {
+            transform: translateY(1px);
+        }
+        .flash-container {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            text-align: center;
+            padding: 10px;
+        }
+        .alert {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #1bb666;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-danger {
+            background-color: #d4edda;
+            color: #c71717;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show fade-out" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <script>
+      setTimeout(function() {
+          let alerts = document.querySelectorAll('.alert');
+          alerts.forEach(function(alert) {
+              alert.classList.remove('show');  // Bootstrap's fade-out
+              alert.classList.add('fade');  // Additional smooth fade
+              setTimeout(() => alert.remove(), 500);  // Remove from DOM after fade
+          });
+      }, 4000);  // 4 seconds timer before the flash message fades out
+    </script>
+
+    <h1>Contact Us</h1>
+    <div class="contact-container">
+        <h2>Get in Touch</h2>
+        <p>We're here to help you plan your next adventure! Reach out to us for any questions or assistance.</p>
+
+        <div class="contact-info">
+            <p><strong>📞 Phone:</strong> +254 769 405 130</p>
+            <p><strong>📧 Email:</strong> info@dnitours.com</p>
+            <p><strong>📍 Address:</strong> Nairobi, Kenya</p>
+        </div>
+
+        <h2>Send Us a Message</h2>
+        <form class="contact-form" action="{{ url_for('contact') }}" method="POST">
+            <input 
+                type="text" 
+                name="name" 
+                placeholder="Your Name" required>
+            <input 
+                type="email" 
+                name="email" 
+                placeholder="Your Email" required>
+            <textarea 
+                name="message" 
+                placeholder="Your Message" 
+                rows="5" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

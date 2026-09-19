@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Kenya - Reset_password</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+            color: #333;
+        }
+
+        .container {
+            background: #a5a9b9;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h2 {
+            color: #3498db;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 95%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            background-color: #f9f9f9;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+        }
+
+        .flash-container {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .alert {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-danger {
+            background-color: #d4edda;
+            color: red;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-success:hover {
+            background-color: #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-container">
+          {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show fade-out" role="alert">
+                {{ message }}
+              </div>
+          {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  <script>
+    setTimeout(function() {
+        let alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
+            alert.classList.remove('show');
+            alert.classList.add('fade');
+            setTimeout(() => alert.remove(), 500);
+        });
+    }, 5000); // the flash message fades away after a timer of 5 seconds
+  </script>  
+    <div class="container">
+        <h2>Reset Password</h2><br>
+        <form method="POST" action="{{ url_for('reset_password') }}">
+            <label for="email">Enter your User Email:</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="Enter your email" required>
+                <br>
+            <label for="new_password">New Password:</label>
+            <input 
+                type="password" 
+                id="new_password" 
+                name="new_password" 
+                placeholder="Enter new password" required>
+            <label for="confirm_password">Confirm New Password:</label>
+            <input 
+                type="password" 
+                id="confirm_password" 
+                name="confirm_password" 
+                placeholder="Confirm new password" required>
+            <button type="submit" class="btn btn-secondary">Reset Password</button>
+        </form>
+    </div>
+</body>
+</html>
